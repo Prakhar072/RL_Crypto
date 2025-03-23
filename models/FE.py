@@ -10,7 +10,7 @@
 
 import torch
 import torch.nn as nn
-from torch.nn.utils import weight_norm
+from torch.nn.utils.parametrizations import weight_norm
 
 
 class Chomp1d(nn.Module):
@@ -50,6 +50,7 @@ class TemporalBlock(nn.Module):
             self.downsample.weight.data.normal_(0, 0.01)
 
     def forward(self, x):
+        print(f"TemporalBlock Input Shape: {x.shape}")
         out = self.net(x)
         res = x if self.downsample is None else self.downsample(x)
         return self.relu(out + res)
