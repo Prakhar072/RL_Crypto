@@ -21,7 +21,7 @@ class FFCStack(nn.Module):
         self.ffc3 = FFC(hidden_dim, hidden_dim, heads, dropout)
 
         # Final convolutional layer
-        self.final_conv = nn.Conv1d(hidden_dim, hidden_dim, kernel_size=3, padding=1)
+        self.final_conv = nn.Conv1d(hidden_dim, 1, kernel_size=3, padding=1)
 
         # Activation
         self.relu = nn.ReLU()
